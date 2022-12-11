@@ -2,23 +2,23 @@
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
 cd /d "%~dp0"
 
-Title Ò»¼ü¸ü»»DNS
+Title ä¸€é”®æ›´æ¢DNS
 
 :caozuo
 Color 0A
 
-::ÍøÂçÊÊÅäÆ÷Ãû×Ö
-set name=ÒÔÌ«Íø
+::ç½‘ç»œé€‚é…å™¨åå­—
+set name=ä»¥å¤ªç½‘
 
 echo.
-echo ¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T
-echo ¡¾¸ü»»DNS¡¿£º
-echo    1.¹úÄÚ114DNS
-echo    2.¹úÍâ¹È¸èDNS
-echo    3.¹úÍâcloudflare
-echo    9.½áÊø½Å±¾
+echo by:weiliang668â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+echo ã€æ›´æ¢DNSã€‘ï¼š
+echo    1.å›½å†…114DNS
+echo    2.å›½å¤–è°·æ­ŒDNS
+echo    3.å›½å¤–cloudflare
+echo    9.ç»“æŸè„šæœ¬
 echo.
-set /p n=ÊäÈëÒª»»DNS±àºÅ£¨Ä¬ÈÏ1£©:
+set /p n=è¾“å…¥è¦æ¢DNSç¼–å·ï¼ˆé»˜è®¤1ï¼‰:
 if "%n%"==""  call :1
 if "%n%"=="1" call :1
 if "%n%"=="2" call :2
@@ -29,15 +29,15 @@ if not "%n%"=="1" if not "%n%"=="2" if not "%n%"=="3" if not "%n%"=="n" if not "
 	cls
 	color 0C
 	echo.
-	echo ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£¡
+	echo è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼
 	pause
 	cls&goto :caozuo
 )
 
 :exit
-::²»¹Ø±Õ´°¿Ú
+::ä¸å…³é—­çª—å£
 pause
-::ÍË³ö
+::é€€å‡º
 goto :eof
 
 :1
@@ -50,7 +50,7 @@ netsh interface ipv4 set dns name=%name% source=static addr=%dns_first% register
 
 netsh interface ipv4 add dns name=%name% addr=%dns_second% index=2
 
-echo ¸ü¸Ä114DNS³É¹¦£¡
+echo æ›´æ”¹114DNSæˆåŠŸï¼
 
 ipconfig /flushdns
 
@@ -59,7 +59,7 @@ goto :caozuo
 
 
 :2
-::¹È¸è DNS
+::è°·æ­Œ DNS
 set dns_first=8.8.8.8
 
 set dns_second=8.8.4.4
@@ -68,7 +68,7 @@ netsh interface ipv4 set dns name=%name% source=static addr=%dns_first% register
 
 netsh interface ipv4 add dns name=%name% addr=%dns_second% index=2
 
-echo ¸ü¸Ä¹È¸èDNS³É¹¦£¡
+echo æ›´æ”¹è°·æ­ŒDNSæˆåŠŸï¼
 
 ipconfig /flushdns
 
@@ -86,28 +86,28 @@ netsh interface ipv4 set dns name=%name% source=static addr=%dns_first% register
 
 netsh interface ipv4 add dns name=%name% addr=%dns_second% index=2
 
-echo ¸ü¸ÄcloudflareDNS³É¹¦£¡
+echo æ›´æ”¹cloudflareDNSæˆåŠŸï¼
 
 ipconfig /flushdns
 
 goto :caozuo 
 
-::Íø¹Ø
+::ç½‘å…³
 ::set mask=255.255.255.0
 
-::µçĞÅ DNS
+::ç”µä¿¡ DNS
 ::set dns_first=61.134.1.4
 ::set dns_second=218.30.19.40
 
-::ÌÚÑ¶ DNS
+::è…¾è®¯ DNS
 ::set dns_first=119.29.29.29
 ::set dns_second=182.254.116.116
 
-::°¢Àï DNS
+::é˜¿é‡Œ DNS
 ::set dns_first=223.5.5.5
 ::set dns_second=223.6.6.6
 
-::°Ù¶È DNS
+::ç™¾åº¦ DNS
 ::set dns_first=180.76.76.76
 ::set dns_second=180.76.76.76
 
